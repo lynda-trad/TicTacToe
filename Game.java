@@ -1,24 +1,33 @@
 package src;
 
-import javax.swing.JFrame;
-
 public class Game
 {
-	private boolean PlayerOne; /*Red*/
-	private boolean PlayerTwo; /*Blue*/
+	private boolean PlayerOne; /*Red == PlayerOne, Blue == PLayerTwo*/
 	private int[] Board;
-	private myJframe frame;
+	private MyJFrame frame;
+	private int winner = 0;
 	
 	public Game()
 	{
 		PlayerOne = true;
-		PlayerTwo = false;
 		Board = new int[9];
-		frame = new myJframe();
+		frame = new MyJFrame();
 	}
 	
 	public static void main(String []args)
 	{
+		Game game = new Game();
+		while(game.winner == 0)
+		{
+			if(game.PlayerOne)
+			{
+				
+			}
+			else
+			{
+				
+			}
+		}
 		System.out.println("This is a TicTacToe game!");
 	}
 }
