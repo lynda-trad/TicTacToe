@@ -16,7 +16,6 @@ public class MyListener extends MouseAdapter
 	public void mouseClicked(MouseEvent e)
 	{
 		super.mouseClicked(e);
-		frame.setMouseX(e.getX());
-		frame.setMouseY(e.getY());
+		frame.setMouseClick(e.getX(), e.getY());
 	}
 }

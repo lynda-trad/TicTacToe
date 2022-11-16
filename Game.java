@@ -1,5 +1,4 @@
 package src;
-
 public class Game
 {
 	private int currentPlayer; /*Red == Player One, Blue == Player Two*/
@@ -11,10 +10,25 @@ public class Game
 	{
 		currentPlayer = 1;
 		Board = new int[3][3];
-		frame = new MyJFrame();
+		frame = new MyJFrame(this);
 	}
-
-	private void setCurrentPlayer(int p)
+	
+	public int[][] getBoard()
+	{
+		return this.Board;
+	}
+	
+	public void editBoard(int x, int y, int value)
+	{
+		this.Board[x][y] = value;
+	}
+	
+	public int getCurrentPlayer()
+	{
+		return this.currentPlayer;
+	}
+	
+	public void setCurrentPlayer(int p)
 	{
 		this.currentPlayer = p;
 	}
@@ -63,21 +77,36 @@ public class Game
 		}
 	}
 	
-	public static void main(String []args)
+	public static void printBoard(Game game)
 	{
+		System.out.println(game.Board[0][0] + " " + game.Board[0][1] + " " + game.Board[0][2]);
+		System.out.println(game.Board[1][0] + " " + game.Board[1][1] + " " + game.Board[1][2]);
+		System.out.println(game.Board[2][2] + " " + game.Board[2][1] + " " + game.Board[2][2]);
+	}
+	
+	public static void main(String []args) throws InterruptedException
+	{
+		int turn = 0;
 		Game game = new Game();
 		checkWinner(game);
 		while(game.winner == 0)
 		{
 			if(game.currentPlayer == 1)
 			{
-				// Player One plays, color changed to red
-				game.setCurrentPlayer(2);
+				game.frame.updateColors();
+
+				System.out.println("Turn" + turn + " - Player" + game.currentPlayer);
+				Game.printBoard(game);
+				turn +=1;
 			}
 			else
 			{
-				// Player Two plays, color changed to blue
-				game.setCurrentPlayer(1);
+				game.frame.updateColors();
+
+				System.out.println("Turn" + turn + "Player" + game.currentPlayer);
+				Game.printBoard(game);
+				
+				turn +=1;
 			}
 		}
 		System.out.println("Player" + game.winner + "won !");
